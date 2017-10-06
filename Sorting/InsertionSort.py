@@ -1,7 +1,7 @@
 import sys
 
 
-def insertion_sort(sequence):
+def sort(sequence):
 
     # For each element, e1. We start with 1, this way the initial list is sorted.
     for i in range(1, len(sequence)):
@@ -23,4 +23,4 @@ def insertion_sort(sequence):
 if __name__ == "__main__":
     sequence_input = sys.argv[1:len(sys.argv)]
     sequence_parsed = list(map(int, sequence_input))
-    print(insertion_sort(sequence_parsed))
+    print(sort(sequence_parsed))
