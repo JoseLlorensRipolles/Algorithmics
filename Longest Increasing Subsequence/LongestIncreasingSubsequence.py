@@ -61,8 +61,6 @@ def longest_increasing_subsequence_n_log_n(sequence):
 
 if __name__ == '__main__':
     sequence = sys.argv[1:len(sys.argv)]
-    print(sequence)
     sequence = list(map(int, sequence))
-    print(sequence)
     print(longest_increasing_subsequence_n_log_n(sequence))
 
