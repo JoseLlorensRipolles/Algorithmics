@@ -6,12 +6,6 @@ def merge(sequence1, sequence2):
     i2 = 0
     sequence = []
 
-    if sequence1 is None:
-        return sequence2
-
-    if sequence2 is None:
-        return sequence1
-
     while i1 < len(sequence1) and i2 < len(sequence2):
         if sequence1[i1] < sequence2[i2]:
             sequence.append(sequence1[i1])
