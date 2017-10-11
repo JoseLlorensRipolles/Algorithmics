@@ -1,6 +1,8 @@
 import sys
 
 
+# Merging two sorted sequences has a linear time complexity, that is why this algorithm is n log(n). The merging is
+# the N
 def merge(sequence1, sequence2):
     i1 = 0
     i2 = 0
@@ -22,6 +24,7 @@ def merge(sequence1, sequence2):
     return sequence
 
 
+# We divide each sequence in two halves. We sort each half and then merge them. This has a log(n) complexity.
 def sort(sequence):
     l = len(sequence)
     if l <= 1:
