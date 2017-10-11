@@ -1,1 +1,1 @@
-__all__ = ["InsertionSort", "BubbleSort", "SelectionSort", "ShellSort"]
+__all__ = ["InsertionSort", "BubbleSort", "SelectionSort", "ShellSort", "MergeSort"]

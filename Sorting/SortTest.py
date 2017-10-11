@@ -22,6 +22,8 @@ class TestSortingMethods(unittest.TestCase):
     def test_shell(self):
         self.assertEqual(sorted(self.unsorted_sequence), ShellSort.sort(self.unsorted_sequence))
 
+    def test_merge(self):
+        self.assertEqual(sorted(self.unsorted_sequence), MergeSort.sort(self.unsorted_sequence))
 
 if __name__ == '__main__':
     unittest.main()
