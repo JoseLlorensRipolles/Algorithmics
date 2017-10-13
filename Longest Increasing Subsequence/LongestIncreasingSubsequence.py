@@ -47,37 +47,53 @@ def longest_increasing_subsequence_n_2(sequence):
 
 def longest_increasing_subsequence_n_log_n(sequence):
 
-    # List holding the minimum number with the longest possible increasing subsequence size equal to index
-    min_number = [sequence[0]]
+    # List holding a tuple with the minimun number with a subsequence with size #index
+    min_numbers = [(sequence[0], 0)]
 
-    # List holding the size of the longest possible increasing subsequence ending in index element
-    longest_subsequence_sizes = [1]
+    # List holding de size of the longest possible subsequence ending in #index element
+    longest_subsequence_size = [1]
 
-    # We calculate the size of the longest possible increasing subsequence ending in each element
+    # Lista holding backpointesr, used later to build the subsequence
+    back_pointers = [-1]
+
+    # Calculate the longest subsequence endieng in element #index
     for i in range(1, len(sequence)):
+
         elem = sequence[i]
         end = False
+        back_pointers.append([-1])
+        subsequence = []
 
-        # We iterate backwards the min_number list. The first element we find that is minor that elem will be
-        # its predecessor in the longest increasing subsequence. One we find it we actualise the list of sizes
-        # and, if needed the min_numbers list.
-        for j in reversed(range(len(min_number))):
-            if elem > min_number[j]:
+        # We iterate backwards on the minimun mubers list. The first element minor than element #i will be his
+        # predecesor in the longest subsequence. Once we find it we actualise the array holding the sizes and the
+        # backpointers and, if needed, we actualize the min numbers list.
+
+        for j in reversed(range(len(min_numbers))):
+            if elem > min_numbers[j][0]:
+
                 end = True
-                longest_subsequence_sizes.append(j + 2)
-                if j + 1 == len(min_number):
-                    min_number.append(elem)
-                else:
-                    if min_number[j+1] > elem:
-                        min_number[j+1] = elem
-                break
-        if elem < min_number[0]:
-            min_number[0] = elem
-        if not end:
-            longest_subsequence_sizes.append(1)
+                longest_subsequence_size.append(j + 2)
+                back_pointers[i] = min_numbers[j][1]
 
-    subsequence = min_number
-    return subsequence
+                if j + 1 == len(min_numbers):
+                    min_numbers.append((elem, i))
+                else:
+                    if min_numbers[j+1][0] > elem:
+                        min_numbers[j+1] = (elem, i)
+                break
+        if elem < min_numbers[0][0]:
+            min_numbers[0] = (elem, i)
+        if not end:
+            longest_subsequence_size.append(1)
+
+    index = min_numbers[-1][1]
+    subsequence_size = longest_subsequence_size[index]
+
+    for i in range(subsequence_size):
+        subsequence.append(sequence[index])
+        index = back_pointers[index]
+
+    return subsequence[::-1]
 
 
 if __name__ == '__main__':
