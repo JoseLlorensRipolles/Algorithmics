@@ -1,7 +1,4 @@
-import sys
-
-
-class Heap:
+class Heap(object):
 
     def __init__(self, array=[]):
 
@@ -82,6 +79,11 @@ class Heap:
         self.sift_down(0)
 
         return result
+
+@staticmethod
+def merge(heap1 :Heap, heap2: Heap):
+
+
 
 
 
