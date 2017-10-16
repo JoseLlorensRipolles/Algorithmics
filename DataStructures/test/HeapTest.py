@@ -104,6 +104,7 @@ class HeapTest(unittest.TestCase):
             self.assertEqual(max_value, heap.pop())
             values.remove(max_value)
 
+    #TODO
     def test_merge(self):
         heap = Heap([1, 3, 6, 4, 3])
         heap2 = Heap([5, 7, 9])

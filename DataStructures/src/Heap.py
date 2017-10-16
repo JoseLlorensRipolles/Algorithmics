@@ -80,10 +80,6 @@ class Heap(object):
 
         return result
 
-@staticmethod
-def merge(heap1 :Heap, heap2: Heap):
-
-
 
 
 
