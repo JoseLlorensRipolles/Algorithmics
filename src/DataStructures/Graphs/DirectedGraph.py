@@ -1,7 +1,4 @@
-from collections import defaultdict
-
-
-class Graph:
+class DirectedGraph:
     def __init__(self, vertices=set()):
         self.vertices = vertices
 

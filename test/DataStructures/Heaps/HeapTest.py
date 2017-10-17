@@ -1,7 +1,7 @@
 import random
 import unittest
 
-from DataStructures.test.Heaps.HeapStub import HeapStub
+from test.DataStructures.Heaps.HeapStub import HeapStub
 
 from src.DataStructures.Heaps.Heap import Heap
 
@@ -105,14 +105,6 @@ class HeapTest(unittest.TestCase):
             max_value = max(values)
             self.assertEqual(max_value, heap.pop())
             values.remove(max_value)
-
-    #TODO
-    def test_merge(self):
-        heap = Heap([1, 3, 6, 4, 3])
-        heap2 = Heap([5, 7, 9])
-        heap.merge()
-        self.assertEqual()
-
 
 if __name__ == '__main__':
     unittest.main()
