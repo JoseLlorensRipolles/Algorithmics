@@ -1,6 +1,7 @@
 import random
 import unittest
-from DataStructures.src.Graph import Graph
+
+from DataStructures.src.Graphs.DirectedGraph import Graph
 
 
 class GraphTest(unittest.TestCase):
@@ -54,6 +55,34 @@ class GraphTest(unittest.TestCase):
         g.add_edge(1, 2, 5)
         self.assertEqual(g.get_edges(), {1: {(2, 5)}, 2: set(), 3: set()})
 
+    def test_outward_vertices(self):
+
+        g = Graph({1, 2, 3})
+
+        g.add_edge(1, 2)
+        g.add_edge(2, 3)
+        self.assertEqual(g.get_outward_vertices(1), {2})
+        self.assertEqual(g.get_outward_vertices(2), {3})
+
+        g.add_edge(1, 3)
+        self.assertEqual(g.get_outward_vertices(1), {2, 3})
+        self.assertEqual(g.get_outward_vertices(1), {3, 2})
+
+        g.add_edge(1, 1)
+        self.assertEqual(g.get_outward_vertices(1), {1, 2, 3})
+
+    def test_inwards_vertices(self):
+
+        g = Graph({1, 2, 3})
+
+        g.add_edge(1, 2)
+        self.assertEqual(g.get_inwards_vertices(2), {1})
+
+        g.add_edge(3, 2)
+        self.assertEqual(g.get_inwards_vertices(2), {1, 3})
+
+        g.add_edge(2, 2)
+        self.assertEqual(g.get_inwards_vertices(2), {1, 2, 3})
 
 if __name__ == '__main__':
     unittest.main()
