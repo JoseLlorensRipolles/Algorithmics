@@ -1,6 +1,7 @@
-from Sorting import *
-import unittest
 import random
+import unittest
+
+from src.Sorting import *
 
 
 class TestSortingMethods(unittest.TestCase):

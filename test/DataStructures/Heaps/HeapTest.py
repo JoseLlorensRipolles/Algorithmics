@@ -1,8 +1,9 @@
 import random
 import unittest
 
-from DataStructures.src.Heaps.Heap import Heap
 from DataStructures.test.Heaps.HeapStub import HeapStub
+
+from src.DataStructures.Heaps.Heap import Heap
 
 
 class HeapTest(unittest.TestCase):

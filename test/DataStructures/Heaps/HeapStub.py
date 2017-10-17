@@ -1,4 +1,4 @@
-from DataStructures.src.Heaps.Heap import Heap
+from src.DataStructures.Heaps.Heap import Heap
 
 
 class HeapStub(Heap):
