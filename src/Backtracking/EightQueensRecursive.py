@@ -6,6 +6,35 @@ def is_promising(s):
     return all(s[new_row] != s[i] and new_row - i != abs(s[new_row] - s[i]) for i in range(new_row))
 
 
+class NQueensSolverIterative:
+
+    def __init__(self, n):
+        self.n = n
+
+    def is_complete(self, s):
+        return len(s) == self.n
+
+    def backtracking(self, s):
+
+        stack = s
+
+        while len(stack) > 0:
+            s = stack.pop()
+
+            if len(s) == self.n:
+                return s
+
+            for row in range(self.n):
+                new_s = s+[row]
+                if is_promising(new_s):
+                    stack.append(new_s)
+
+        return None
+
+    def solve(self):
+        return self.backtracking([[]])
+
+
 class NQueensSolverRecursive:
     def __init__(self, n):
         self.n = n
@@ -22,7 +51,7 @@ class NQueensSolverRecursive:
             news = s + [row]
             if is_promising(news):
                 found = self.backtracking(news)
-                if found != None:
+                if found is not None:
                     return found
 
         return None
@@ -53,14 +82,26 @@ class AllSolutionsRecursive(NQueensSolverRecursive):
             solutions.append(solution)
         return solutions
 
-if __name__ == '__main__':
 
-    for i in range(4,7):
-        Solver = AllSolutionsRecursive(i)
-        timer = time.time()
-        solutions = Solver.solve()
-        timer2 = time.time()
-        print('Time:', timer2-timer)
-        print('Solutions:', solutions,)
+class NQueensSolverRecursiveHeap(NQueensSolverRecursive):
 
+    def __init__(self, n):
+        super().__init__(n)
 
+    def backtracking(self, s):
+        stack = s
+        if len(s) == self.n:
+            return s
+
+        for row in range(self.n):
+            stack.append(row)
+            if is_promising(stack):
+                found = self.backtracking(stack)
+                if found is not None:
+                    return found
+                else:
+                    stack.pop()
+            else:
+                stack.pop()
+
+        return None
