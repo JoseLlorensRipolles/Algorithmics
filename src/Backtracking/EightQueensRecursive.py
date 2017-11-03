@@ -2,7 +2,8 @@ import time
 
 
 def is_promising(s):
-    return all(s[i] != s[j] and j - i != abs(s[i] - s[j]) for i in range(len(s)) for j in range(i + 1, len(s)))
+    new_row = len(s)-1
+    return all(s[new_row] != s[i] and new_row - i != abs(s[new_row] - s[i]) for i in range(new_row))
 
 
 class NQueensSolverRecursive:
