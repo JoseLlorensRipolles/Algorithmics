@@ -1,5 +1,3 @@
-import time
-
 
 def is_promising(s):
     new_row = len(s)-1
@@ -16,23 +14,35 @@ class NQueensSolverIterative:
 
     def backtracking(self, s):
 
-        stack = s
+        if not s:
+            stack = [None]
+        else:
+            stack = s
 
         while len(stack) > 0:
-            s = stack.pop()
 
-            if len(s) == self.n:
-                return s
+            q = stack.pop()
+            if q is None:
+                i = 0
+            else:
+                i = q + 1
 
-            for row in range(self.n):
-                new_s = s+[row]
-                if is_promising(new_s):
-                    stack.append(new_s)
-
+            while i < self.n:
+                q = i
+                i += 1
+                aux = stack + [q]
+                if is_promising(aux):
+                    stack.append(q)
+                    if len(stack) == self.n:
+                        return stack
+                    stack.append(None)
+                    break
         return None
 
     def solve(self):
-        return self.backtracking([[]])
+        return self.backtracking([])
+
+
 
 
 class NQueensSolverRecursive:
