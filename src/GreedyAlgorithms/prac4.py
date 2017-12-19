@@ -81,8 +81,7 @@ def generate_greedy_ordering_opt(G):
 
         for j in range(N):
             if j not in vertex_list:
-                vertex_scores[j] -= G[j][index]
-                vertex_scores[j] += G[index][j]
+                vertex_scores[j] -= G[j][index]*2
     return vertex_list
 
 
@@ -123,13 +122,14 @@ G = np.asarray([[0, 8, 3, 2, 9],
 # con valor 10
 
 # este trozo prueba ejemplos aleatorios:
-# N = 30
-# G = create_graph(N, 100)
-# print("G=",G)
+N = 30
+G = create_graph(N, 100)
+print("G=",G)
 G = process_graph(G)
 print(G)
 random_ordering = generate_random_ordering(G)
 greedy_ordering = generate_greedy_ordering(G)
-greedy_ordering = generate_greedy_ordering_opt(G)
+greedy_ordering2 = generate_greedy_ordering_opt(G)
 print("random", evaluate(G, random_ordering))
 print("greedy", evaluate(G, greedy_ordering))
+print("greedy2", evaluate(G, greedy_ordering))
